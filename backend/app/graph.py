@@ -208,34 +208,31 @@ def project_promo_node(state: AgentState) -> AgentState:
     Generates a LinkedIn post about THIS project (the News Content Generator).
     """
     prompt = """
-    Write a short, funny, and engaging LinkedIn post announcing a new Python project I built, targeted to developers, AI engineers, and tech leaders.
-
-    Project Name: “Automated News Content Generator & LinkedIn Auto-Poster”
-
-    Project capabilities:
-    - Uses Google Search API to fetch the latest trending tech news.
-    Write a short, funny LinkedIn post about a Python project I just built.
+    Write a casual, "Reddit-style" LinkedIn post announcing a new Python project I built.
+    Target audience: Developers, AI Engineers.
     
-    Project Name: “Automated Internet Researcher & LinkedIn Auto-Poster”
-
-    Project capabilities:
-    - Searches the internet (Google Search API) for the latest and most relevant content on ANY topic I provide — not just tech news.
-    - Finds related GitHub repositories, research papers, blog articles, or resources to support the topic.
-    - Uses an AI Agent (LangChain / LangGraph) to analyze the collected information and automatically generate a high-quality LinkedIn post based on the insights.
-    - Creates a one-click “Post to LinkedIn” publishing link that automatically uploads the generated post — no manual typing or copy-paste needed.
-    - After posting, automatically saves the content in Markdown (.md) format to my Google Drive for versioning, documentation, and future automation workflows.
-
+    Context (My Learning Journey):
+    - I wanted to really understand **AI Agents** and **LangGraph**, not just build another wrapper.
+    - I learned how to orchestrate multiple tools (Google Search, GitHub, Drive) and manage state between nodes.
+    - It was a fun challenge to build an autonomous workflow that actually *does* work for me.
     
-    The Twist: Mention that THIS post itself was written by the tool.
+    What I Built ("Automated Internet Researcher"):
+    - It takes a topic, searches Google for the latest info, and finds relevant GitHub repos.
+    - An AI agent analyzes everything and writes a LinkedIn post (like this one).
+    - It generates a one-click publishing link and archives everything to my Google Drive.
+    
+    The Twist:
+    - Reveal at the end that this specific post was written by the tool itself.
     
     Guidelines:
-    1. **Voice**: Reddit style. Super casual. Lowercase is fine. "i built a thing".
-    2. **NO FANCY WORDS**: If it sounds like a marketing team wrote it, delete it. No "leverage", "synergy", "revolutionary", "excited to announce".
-    3. **NO EM-DASHES**.
-    4. **Length**: Under 800 characters.
-    5. **Hashtags**: #Python #Automation #LazyDev
+    1. Voice: Casual, humble, "builder" vibe. Lowercase is okay. "i built a thing".
+    2. Anti-Marketing: NO "excited to announce", "revolutionary", "leverage", "delve", "synergy". Keep it real.
+    3. Structure: Hook (Learning) -> What it does -> The Twist -> CTA.
+    4. Call to Action: Write a short line inviting people to try it, like "if you want to try it, grab the github link below:" (Do not generate a URL, I will paste it myself).
+    5. Length: Under 800 chars.
+    6. Hashtags: #Python #LangGraph #AI #BuildInPublic
     
-    Return ONLY the post text. No JSON.
+    Return ONLY the post text.
     """
     
     post_text = ChatOpenAI(model="gpt-4o-mini").invoke([HumanMessage(content=prompt)]).content.strip()
