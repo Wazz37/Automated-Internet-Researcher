@@ -1,0 +1,13 @@
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+GOOGLE_CX = os.getenv("GOOGLE_CX")
+GITHUB_ACCESS_TOKEN = os.getenv("GITHUB_ACCESS_TOKEN")
+GDRIVE_FOLDER_ID = os.getenv("GDRIVE_FOLDER_ID")
+LINKEDIN_EMAIL = os.getenv("LINKEDIN_EMAIL")
+LINKEDIN_PASSWORD = os.getenv("LINKEDIN_PASSWORD")
+LINKEDIN_COOKIE = os.getenv("LINKEDIN_COOKIE")
+LINKEDIN_JSESSIONID = os.getenv("LINKEDIN_JSESSIONID")
